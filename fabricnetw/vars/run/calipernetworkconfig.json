@@ -1,0 +1,96 @@
+{
+  "name": "test-gibberish",
+  "version": "1.0",
+  "info": {
+    "details": {
+      "Version": "2.3.0",
+      "PeerOrgs": "doctor.example.com,hospadmin.example.com,patient.example.com",
+      "NumberOfPeers": 5,
+      "OrdererOrgs": "example.com",
+      "NumberOfOrderers": 3,
+      "Orderer": Raft,
+      "StateDB": "golevel"
+    }
+  },  
+  "caliper": {
+    "blockchain": "fabric"
+  },
+  "clients": {
+    "Admin@doctor.example.com": {
+      "client": {
+        "credentialStore": {
+          "path": "tmp/org1",
+          "cryptoStore": {"path": "tmp/org1"}
+        },
+        "organization": "doctor.example.com",
+        "clientPrivateKey": {
+          "path": "/hyperledger/caliper/workspace/keyfiles/peerOrganizations/doctor.example.com/users/Admin@doctor.example.com/msp/keystore/priv_sk"
+        },
+        "clientSignedCert": {
+          "path": "/hyperledger/caliper/workspace/keyfiles/peerOrganizations/doctor.example.com/users/Admin@doctor.example.com/msp/signcerts/Admin@doctor.example.com-cert.pem"
+        },
+        "connection": {
+          "timeout": { "peer": { "endorser": "300" } }
+        }
+      }
+    }
+  },
+  "channels": {
+      "hospital": {
+          "created" : true,
+          "contracts": [
+              { "id": "mycc", "version": "2.1" }
+          ]
+      }
+  },
+  "organizations":{
+    "doctor.example.com": {
+      "mspid": "doctor-example-com",
+      "peers": [
+        "peer1.doctor.example.com",
+        "peer2.doctor.example.com"
+      ],
+      "certificateAuthorities": [
+         "ca1.doctor.example.com"
+      ],
+      "adminPrivateKey": {
+        "path": "/hyperledger/caliper/workspace/keyfiles/peerOrganizations/doctor.example.com/users/Admin@doctor.example.com/msp/keystore/priv_sk"
+      },
+      "signedCert": {
+        "path": "/hyperledger/caliper/workspace/keyfiles/peerOrganizations/doctor.example.com/users/Admin@doctor.example.com/msp/signcerts/Admin@doctor.example.com-cert.pem"
+      }
+    }
+  },
+  "peers": {
+    "peer1.doctor.example.com": {
+      "url": "grpcs://peer1.doctor.example.com:7051",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer1.doctor.example.com",
+        "hostnameOverride": "peer1.doctor.example.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIIC0DCCAnagAwIBAgIUaIwwN/IVfanuXrv0zzfJj0GhQdAwCgYIKoZIzj0EAwIw\neTELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH\nDAdSYWxlaWdoMRswGQYDVQQKDBJkb2N0b3IuZXhhbXBsZS5jb20xIjAgBgNVBAMM\nGXRsc2NhMS5kb2N0b3IuZXhhbXBsZS5jb20wHhcNMjMwNTA2MDczMzUzWhcNMzMw\nNTAzMDczMzUzWjB5MQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xp\nbmExEDAOBgNVBAcMB1JhbGVpZ2gxGzAZBgNVBAoMEmRvY3Rvci5leGFtcGxlLmNv\nbTEiMCAGA1UEAwwZdGxzY2ExLmRvY3Rvci5leGFtcGxlLmNvbTBZMBMGByqGSM49\nAgEGCCqGSM49AwEHA0IABN54gJH+PwAwEu8K2IG6c6hJVwsdxHDG3MdS9h7d4w+u\nYrwM1Sy5FWBntnXt529wDsJEEqKROY1TXL6GXXAvfnyjgdswgdgwHQYDVR0OBBYE\nFC/c3HoT845doFivfxeyUWtfzLTZMB8GA1UdIwQYMBaAFC/c3HoT845doFivfxey\nUWtfzLTZMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQW\nMBQGCCsGAQUFBwMBBggrBgEFBQcDAjBWBgNVHREETzBNhwSsF/K3ghl0bHNjYTEu\nZG9jdG9yLmV4YW1wbGUuY29tghl0bHNjYTEtZG9jdG9yLWV4YW1wbGUtY29tggls\nb2NhbGhvc3SHBH8AAAEwCgYIKoZIzj0EAwIDSAAwRQIhALqJHFUtFIZFN1hHB7/V\nlhVAUh8nmxY+0MrpynGERmYKAiBDib0kJD19m8jKKMLmRo3fbfwcnox+QKCvNKbm\nhV/u8A==\n-----END CERTIFICATE-----"
+      }
+    },
+    "peer2.doctor.example.com": {
+      "url": "grpcs://peer2.doctor.example.com:7051",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer2.doctor.example.com",
+        "hostnameOverride": "peer2.doctor.example.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIIC0DCCAnagAwIBAgIUaIwwN/IVfanuXrv0zzfJj0GhQdAwCgYIKoZIzj0EAwIw\neTELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH\nDAdSYWxlaWdoMRswGQYDVQQKDBJkb2N0b3IuZXhhbXBsZS5jb20xIjAgBgNVBAMM\nGXRsc2NhMS5kb2N0b3IuZXhhbXBsZS5jb20wHhcNMjMwNTA2MDczMzUzWhcNMzMw\nNTAzMDczMzUzWjB5MQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xp\nbmExEDAOBgNVBAcMB1JhbGVpZ2gxGzAZBgNVBAoMEmRvY3Rvci5leGFtcGxlLmNv\nbTEiMCAGA1UEAwwZdGxzY2ExLmRvY3Rvci5leGFtcGxlLmNvbTBZMBMGByqGSM49\nAgEGCCqGSM49AwEHA0IABN54gJH+PwAwEu8K2IG6c6hJVwsdxHDG3MdS9h7d4w+u\nYrwM1Sy5FWBntnXt529wDsJEEqKROY1TXL6GXXAvfnyjgdswgdgwHQYDVR0OBBYE\nFC/c3HoT845doFivfxeyUWtfzLTZMB8GA1UdIwQYMBaAFC/c3HoT845doFivfxey\nUWtfzLTZMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQW\nMBQGCCsGAQUFBwMBBggrBgEFBQcDAjBWBgNVHREETzBNhwSsF/K3ghl0bHNjYTEu\nZG9jdG9yLmV4YW1wbGUuY29tghl0bHNjYTEtZG9jdG9yLWV4YW1wbGUtY29tggls\nb2NhbGhvc3SHBH8AAAEwCgYIKoZIzj0EAwIDSAAwRQIhALqJHFUtFIZFN1hHB7/V\nlhVAUh8nmxY+0MrpynGERmYKAiBDib0kJD19m8jKKMLmRo3fbfwcnox+QKCvNKbm\nhV/u8A==\n-----END CERTIFICATE-----"
+      }
+    }
+  },
+  "certificateAuthorities": {
+    "ca1.doctor.example.com": {
+      "url": "https://ca1.doctor.example.com:7054",
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICxTCCAmqgAwIBAgIUXFOAG7YmFDTBuewzvuXmoE+ngW0wCgYIKoZIzj0EAwIw\ndjELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH\nDAdSYWxlaWdoMRswGQYDVQQKDBJkb2N0b3IuZXhhbXBsZS5jb20xHzAdBgNVBAMM\nFmNhMS5kb2N0b3IuZXhhbXBsZS5jb20wHhcNMjMwNTA2MDczMzUzWhcNMzMwNTAz\nMDczMzUzWjB2MQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xpbmEx\nEDAOBgNVBAcMB1JhbGVpZ2gxGzAZBgNVBAoMEmRvY3Rvci5leGFtcGxlLmNvbTEf\nMB0GA1UEAwwWY2ExLmRvY3Rvci5leGFtcGxlLmNvbTBZMBMGByqGSM49AgEGCCqG\nSM49AwEHA0IABNK/x5DJQxltU2sO9Vj0KneozlVD5/ZUxr6xAcdiW7hAzazBmMo1\n3/JwjOY4kfyOdgWaOvMEfkUliAycEV8wuIijgdUwgdIwHQYDVR0OBBYEFALFP2kI\nbl8PLsBPsLzj2OWOqjiIMB8GA1UdIwQYMBaAFALFP2kIbl8PLsBPsLzj2OWOqjiI\nMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsG\nAQUFBwMBBggrBgEFBQcDAjBQBgNVHREESTBHhwSsF/K3ghZjYTEuZG9jdG9yLmV4\nYW1wbGUuY29tghZjYTEtZG9jdG9yLWV4YW1wbGUtY29tgglsb2NhbGhvc3SHBH8A\nAAEwCgYIKoZIzj0EAwIDSQAwRgIhAIUU0v3IZtMBXX1V7z9z3rd/x91lCp93WYx+\nPeZU00BHAiEAk30PMD7P1FMPczGSt7dpePqkGHy289kTe/gGG3gZZVQ=\n-----END CERTIFICATE-----"
+      },
+      "httpOptions": { "verify": "false" },
+      "caName": "ca1"
+    }
+  }
+}

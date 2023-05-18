@@ -1,0 +1,207 @@
+---
+Organizations:
+  - &doctor-example-com
+      Name: doctor-example-com
+      ID: doctor-example-com
+      MSPDir: keyfiles/peerOrganizations/doctor.example.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('doctor-example-com.admin', 'doctor-example-com.peer', 'doctor-example-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('doctor-example-com.admin', 'doctor-example-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('doctor-example-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('doctor-example-com.peer')"
+
+      AnchorPeers:
+      - Host: peer1.doctor.example.com
+        Port: 7051
+      - Host: peer2.doctor.example.com
+        Port: 7051
+  - &example-com
+      Name: example-com
+      ID: example-com
+      MSPDir: keyfiles/ordererOrganizations/example.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('example-com.member')"
+        Writers:
+          Type: Signature
+          Rule: "OR('example-com.member')"
+        Admins:
+          Type: Signature
+          Rule: "OR('example-com.admin')"
+  - &hospadmin-example-com
+      Name: hospadmin-example-com
+      ID: hospadmin-example-com
+      MSPDir: keyfiles/peerOrganizations/hospadmin.example.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('hospadmin-example-com.admin', 'hospadmin-example-com.peer', 'hospadmin-example-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('hospadmin-example-com.admin', 'hospadmin-example-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('hospadmin-example-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('hospadmin-example-com.peer')"
+
+      AnchorPeers:
+      - Host: peer1.hospadmin.example.com
+        Port: 7051
+  - &patient-example-com
+      Name: patient-example-com
+      ID: patient-example-com
+      MSPDir: keyfiles/peerOrganizations/patient.example.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('patient-example-com.admin', 'patient-example-com.peer', 'patient-example-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('patient-example-com.admin', 'patient-example-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('patient-example-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('patient-example-com.peer')"
+
+      AnchorPeers:
+      - Host: peer1.patient.example.com
+        Port: 7051
+      - Host: peer2.patient.example.com
+        Port: 7051
+
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+
+  Orderer: &OrdererCapabilities
+    V2_0: true
+
+  Application: &ApplicationCapabilities
+    V2_0: true
+
+Application: &ApplicationDefaults
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  OrdererType: etcdraft
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 10
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+
+  Addresses:
+  - orderer1.example.com:7050
+  - orderer2.example.com:7050
+  - orderer3.example.com:7050
+  EtcdRaft:
+    Consenters:
+    - Host: orderer1.example.com
+      Port: 7050
+      ClientTLSCert: keyfiles/ordererOrganizations/example.com/orderers/orderer1.example.com/tls/server.crt
+      ServerTLSCert: keyfiles/ordererOrganizations/example.com/orderers/orderer1.example.com/tls/server.crt
+    - Host: orderer2.example.com
+      Port: 7050
+      ClientTLSCert: keyfiles/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+      ServerTLSCert: keyfiles/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+    - Host: orderer3.example.com
+      Port: 7050
+      ClientTLSCert: keyfiles/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
+      ServerTLSCert: keyfiles/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Profiles:
+  OrgChannel:
+    Consortium: SampleConsortium
+    <<: *ChannelDefaults
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+      - *doctor-example-com
+      - *hospadmin-example-com
+      - *patient-example-com
+      Capabilities:
+        <<: *ApplicationCapabilities
+
+  OrdererGenesis:
+    <<: *ChannelDefaults
+    Capabilities:
+      <<: *ChannelCapabilities
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+      - *example-com
+      Capabilities:
+        <<: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+      - <<: *example-com
+    Consortiums:
+      SampleConsortium:
+        Organizations:
+        - *doctor-example-com
+        - *hospadmin-example-com
+        - *patient-example-com

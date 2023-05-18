@@ -1,0 +1,23 @@
+{
+    "caliper": {
+        "blockchain": "ethereum"
+    },
+    "ethereum": {
+        "url": "ws://172.23.240.1:7545",
+        "contractDeployerAddress": "0x8631aAf7a6617a4cD1b91c1D5436eb6b90A79A96",
+        "contractDeployerAddressPrivateKey":"0x55e2c0a4ffc8166973ea20b8dafdb80cc8e9838d4061103d73db3731cba5f9f8",
+        "fromAddress": "0x63c72a626b051aB781C290AabDF9d59dbC6aDbc3",
+        "fromAddressPrivateKey": "0x89889f74c02a8a8cf36e17f1641949eef8fc660f63f152ecf629a8a4446c7043",
+        "transactionConfirmationBlocks": 12,
+        "contracts": {
+            "simple": {
+                "path": "../contracts/HealthCare.sol",
+                "gas": {
+                    "open": 45000,
+                    "query": 100000,
+                    "transfer": 70000
+                }
+            }
+        }
+    }
+}

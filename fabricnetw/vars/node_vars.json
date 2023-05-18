@@ -1,0 +1,170 @@
+{
+  "allcas": [
+    {
+      "adminPassword": "adminpw",
+      "command": "fabric-ca-server start -b admin:adminpw --cfg.affiliations.allowremove --cfg.identities.allowremove",
+      "fullname": "ca1.doctor.example.com",
+      "mspid": "doctor-example-com",
+      "name": "ca1",
+      "org": "doctor.example.com",
+      "port": "7054",
+      "portmap": "",
+      "type": "ca",
+      "url": "ca1.doctor.example.com"
+    },
+    {
+      "adminPassword": "adminpw",
+      "command": "fabric-ca-server start -b admin:adminpw --cfg.affiliations.allowremove --cfg.identities.allowremove",
+      "fullname": "ca1.patient.example.com",
+      "mspid": "patient-example-com",
+      "name": "ca1",
+      "org": "patient.example.com",
+      "port": "7054",
+      "portmap": "",
+      "type": "ca",
+      "url": "ca1.patient.example.com"
+    },
+    {
+      "adminPassword": "adminpw",
+      "command": "fabric-ca-server start -b admin:adminpw --cfg.affiliations.allowremove --cfg.identities.allowremove",
+      "fullname": "ca1.hospadmin.example.com",
+      "mspid": "hospadmin-example-com",
+      "name": "ca1",
+      "org": "hospadmin.example.com",
+      "port": "7054",
+      "portmap": "",
+      "type": "ca",
+      "url": "ca1.hospadmin.example.com"
+    }
+  ],
+  "allcouchdbs": [],
+  "allorderers": [
+    {
+      "fullname": "orderer1.example.com",
+      "mspid": "example-com",
+      "name": "orderer1",
+      "org": "example.com",
+      "port": "7050",
+      "portmap": "",
+      "type": "orderer",
+      "url": "orderer1.example.com"
+    },
+    {
+      "fullname": "orderer2.example.com",
+      "mspid": "example-com",
+      "name": "orderer2",
+      "org": "example.com",
+      "port": "7050",
+      "portmap": "",
+      "type": "orderer",
+      "url": "orderer2.example.com"
+    },
+    {
+      "fullname": "orderer3.example.com",
+      "mspid": "example-com",
+      "name": "orderer3",
+      "org": "example.com",
+      "port": "7050",
+      "portmap": "",
+      "type": "orderer",
+      "url": "orderer3.example.com"
+    }
+  ],
+  "allorgs": [
+    "doctor.example.com",
+    "example.com",
+    "hospadmin.example.com",
+    "patient.example.com"
+  ],
+  "allpeers": [
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.doctor.example.com",
+      "mspid": "doctor-example-com",
+      "name": "peer1",
+      "org": "doctor.example.com",
+      "port": "7051",
+      "portmap": "",
+      "type": "peer",
+      "url": "peer1.doctor.example.com"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.doctor.example.com",
+      "mspid": "doctor-example-com",
+      "name": "peer2",
+      "org": "doctor.example.com",
+      "port": "7051",
+      "portmap": "",
+      "type": "peer",
+      "url": "peer2.doctor.example.com"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.patient.example.com",
+      "mspid": "patient-example-com",
+      "name": "peer1",
+      "org": "patient.example.com",
+      "port": "7051",
+      "portmap": "",
+      "type": "peer",
+      "url": "peer1.patient.example.com"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.patient.example.com",
+      "mspid": "patient-example-com",
+      "name": "peer2",
+      "org": "patient.example.com",
+      "port": "7051",
+      "portmap": "",
+      "type": "peer",
+      "url": "peer2.patient.example.com"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.hospadmin.example.com",
+      "mspid": "hospadmin-example-com",
+      "name": "peer1",
+      "org": "hospadmin.example.com",
+      "port": "7051",
+      "portmap": "",
+      "type": "peer",
+      "url": "peer1.hospadmin.example.com"
+    }
+  ],
+  "caorgs": [
+    "doctor.example.com",
+    "hospadmin.example.com",
+    "patient.example.com"
+  ],
+  "console_port": "7203",
+  "explorer_port": "7201",
+  "ordererorgs": [
+    "example.com"
+  ],
+  "orgattrs": {
+    "doctor.example.com": {
+      "certpath": "peerOrganizations",
+      "mspid": "doctor-example-com"
+    },
+    "example.com": {
+      "certpath": "ordererOrganizations",
+      "mspid": "example-com"
+    },
+    "hospadmin.example.com": {
+      "certpath": "peerOrganizations",
+      "mspid": "hospadmin-example-com"
+    },
+    "patient.example.com": {
+      "certpath": "peerOrganizations",
+      "mspid": "patient-example-com"
+    }
+  },
+  "peerorgs": [
+    "doctor.example.com",
+    "hospadmin.example.com",
+    "patient.example.com"
+  ],
+  "portainer_port": "7202"
+}

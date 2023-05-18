@@ -1,0 +1,14 @@
+test:
+  name: sample
+  description: first test
+  workers:
+    number: 5
+  rounds:
+    - label: adding data
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts: 
+          tps: 20
+      workload:
+        module: benchmarks/workloads/callbacks.js

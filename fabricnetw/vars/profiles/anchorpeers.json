@@ -1,0 +1,37 @@
+{
+  "doctor-example-com": {
+    "AnchorPeers": {
+      "mod_policy": "Admins",
+      "value": {
+        "anchor_peers": [
+           { "host": "peer1.doctor.example.com", "port": "7051" },
+           { "host": "peer2.doctor.example.com", "port": "7051" }
+        ]
+      },
+      "version": "0"
+    }
+  },
+  "hospadmin-example-com": {
+    "AnchorPeers": {
+      "mod_policy": "Admins",
+      "value": {
+        "anchor_peers": [
+           { "host": "peer1.hospadmin.example.com", "port": "7051" }
+        ]
+      },
+      "version": "0"
+    }
+  },
+  "patient-example-com": {
+    "AnchorPeers": {
+      "mod_policy": "Admins",
+      "value": {
+        "anchor_peers": [
+           { "host": "peer1.patient.example.com", "port": "7051" },
+           { "host": "peer2.patient.example.com", "port": "7051" }
+        ]
+      },
+      "version": "0"
+    }
+  }
+}

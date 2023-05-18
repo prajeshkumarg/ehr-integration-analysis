@@ -1,0 +1,9 @@
+{
+  "network-configs": {
+    "gibberish": {
+      "name": "gibberish",
+      "profile": "./connection-profile/hospital_profile.json"
+    }
+  },
+  "license": "Apache-2.0"
+}

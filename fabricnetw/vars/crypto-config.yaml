@@ -1,0 +1,66 @@
+---
+OrdererOrgs:
+  - Name: example.com
+    Domain: example.com
+    Specs:
+      - Hostname: orderer1
+        SANS:
+          - orderer1.example.com
+      - Hostname: orderer2
+        SANS:
+          - orderer2.example.com
+      - Hostname: orderer3
+        SANS:
+          - orderer3.example.com
+
+PeerOrgs:
+  - Name: doctor.example.com
+    Domain: doctor.example.com
+    EnableNodeOUs: true
+    CA:
+      Hostname: ca1
+      CommonName: ca1.doctor.example.com
+      Country: US
+      Province: North Carolina
+      Locality: Raleigh
+    Specs:
+      - Hostname: peer1
+        CommonName: peer1.doctor.example.com
+        SANS:
+          - peer1.doctor.example.com
+      - Hostname: peer2
+        CommonName: peer2.doctor.example.com
+        SANS:
+          - peer2.doctor.example.com
+  - Name: hospadmin.example.com
+    Domain: hospadmin.example.com
+    EnableNodeOUs: true
+    CA:
+      Hostname: ca1
+      CommonName: ca1.hospadmin.example.com
+      Country: US
+      Province: North Carolina
+      Locality: Raleigh
+    Specs:
+      - Hostname: peer1
+        CommonName: peer1.hospadmin.example.com
+        SANS:
+          - peer1.hospadmin.example.com
+  - Name: patient.example.com
+    Domain: patient.example.com
+    EnableNodeOUs: true
+    CA:
+      Hostname: ca1
+      CommonName: ca1.patient.example.com
+      Country: US
+      Province: North Carolina
+      Locality: Raleigh
+    Specs:
+      - Hostname: peer1
+        CommonName: peer1.patient.example.com
+        SANS:
+          - peer1.patient.example.com
+      - Hostname: peer2
+        CommonName: peer2.patient.example.com
+        SANS:
+          - peer2.patient.example.com

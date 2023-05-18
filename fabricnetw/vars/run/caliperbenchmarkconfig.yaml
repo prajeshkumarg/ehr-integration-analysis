@@ -1,0 +1,20 @@
+test:
+    name: mycc-benchmark
+    description: test benchmark
+    workers:
+      type: local
+      number: 5
+    rounds:
+      - label: mycc test
+        description: mycc benchmark
+        txDuration: 30
+        rateControl: 
+          type: fixed-load
+          opts:
+            transactionLoad: 1000
+        workload:
+          module: /hyperledger/caliper/workspace/app/callback/app.js
+          arguments:
+            contractId: mycc
+            randomSeed: 5000000
+            userID: Admin@doctor.example.com

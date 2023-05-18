@@ -1,0 +1,182 @@
+{
+  "name": "fabric-network",
+  "description": "Generated network configuration file",
+  "version": "0.1",
+  "client": {
+    "organization": "patient.example.com",
+    "credentialStore": {
+      "path": "/tmp/hfc-kvs",
+      "cryptoStore": {
+        "path": "/tmp/hfc-cvs"
+      },
+      "wallet": "wallet-name"
+    }
+  },
+  "organizations": {
+    "doctor.example.com": {
+      "mspid": "doctor-example-com",
+      "peers": [
+        "peer1.doctor.example.com",
+        "peer2.doctor.example.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/peerOrganizations/doctor.example.com/users/Admin@doctor.example.com/msp/signcerts/Admin@doctor.example.com-cert.pem",
+          "private_key": "/keyfiles/peerOrganizations/doctor.example.com/users/Admin@doctor.example.com/msp/keystore/priv_sk"
+        }
+      }
+    },
+    "example.com": {
+      "mspid": "example-com",
+      "orderers": [
+        "orderer1.example.com",
+        "orderer2.example.com",
+        "orderer3.example.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/ordererOrganizations/example.com/users/Admin@example.com/msp/signcerts/Admin@example.com-cert.pem",
+          "private_key": "/keyfiles/ordererOrganizations/example.com/users/Admin@example.com/msp/keystore/priv_sk"
+        }
+      }
+    },
+    "hospadmin.example.com": {
+      "mspid": "hospadmin-example-com",
+      "peers": [
+        "peer1.hospadmin.example.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/peerOrganizations/hospadmin.example.com/users/Admin@hospadmin.example.com/msp/signcerts/Admin@hospadmin.example.com-cert.pem",
+          "private_key": "/keyfiles/peerOrganizations/hospadmin.example.com/users/Admin@hospadmin.example.com/msp/keystore/priv_sk"
+        }
+      }
+    },
+    "patient.example.com": {
+      "mspid": "patient-example-com",
+      "peers": [
+        "peer1.patient.example.com",
+        "peer2.patient.example.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/peerOrganizations/patient.example.com/users/Admin@patient.example.com/msp/signcerts/Admin@patient.example.com-cert.pem",
+          "private_key": "/keyfiles/peerOrganizations/patient.example.com/users/Admin@patient.example.com/msp/keystore/priv_sk"
+        }
+      }
+    }
+  },
+  "orderers": {
+    "orderer1.example.com": {
+      "url": "orderer1.example.com:7050",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "orderer1.example.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/ordererOrganizations/example.com/orderers/orderer1.example.com/tls/ca.crt"
+      }
+    },
+    "orderer2.example.com": {
+      "url": "orderer2.example.com:7050",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "orderer2.example.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/ca.crt"
+      }
+    },
+    "orderer3.example.com": {
+      "url": "orderer3.example.com:7050",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "orderer3.example.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/ca.crt"
+      }
+    }
+  },
+  "peers": {
+    "peer1.doctor.example.com": {
+      "url": "peer1.doctor.example.com:7051",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer1.doctor.example.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/doctor.example.com/peers/peer1.doctor.example.com/tls/ca.crt"
+      }
+    },
+    "peer2.doctor.example.com": {
+      "url": "peer2.doctor.example.com:7051",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer2.doctor.example.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/doctor.example.com/peers/peer2.doctor.example.com/tls/ca.crt"
+      }
+    },
+    "peer1.patient.example.com": {
+      "url": "peer1.patient.example.com:7051",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer1.patient.example.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/patient.example.com/peers/peer1.patient.example.com/tls/ca.crt"
+      }
+    },
+    "peer2.patient.example.com": {
+      "url": "peer2.patient.example.com:7051",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer2.patient.example.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/patient.example.com/peers/peer2.patient.example.com/tls/ca.crt"
+      }
+    },
+    "peer1.hospadmin.example.com": {
+      "url": "peer1.hospadmin.example.com:7051",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer1.hospadmin.example.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/hospadmin.example.com/peers/peer1.hospadmin.example.com/tls/ca.crt"
+      }
+    }
+  },
+  "certificateAuthorities": {
+    "ca1.doctor.example.com": {
+      "url": "https://ca1.doctor.example.com:7054",
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/doctor.example.com/ca/ca1.doctor.example.com-cert.pem"
+      },
+      "httpOptions": { "verify": "false" },
+      "caName": "ca1",
+      "registrar": { "enrollId": "admin", "enrollSecret": "adminpw" }
+    },
+    "ca1.patient.example.com": {
+      "url": "https://ca1.patient.example.com:7054",
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/patient.example.com/ca/ca1.patient.example.com-cert.pem"
+      },
+      "httpOptions": { "verify": "false" },
+      "caName": "ca1",
+      "registrar": { "enrollId": "admin", "enrollSecret": "adminpw" }
+    },
+    "ca1.hospadmin.example.com": {
+      "url": "https://ca1.hospadmin.example.com:7054",
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/hospadmin.example.com/ca/ca1.hospadmin.example.com-cert.pem"
+      },
+      "httpOptions": { "verify": "false" },
+      "caName": "ca1",
+      "registrar": { "enrollId": "admin", "enrollSecret": "adminpw" }
+    }
+  }
+}
