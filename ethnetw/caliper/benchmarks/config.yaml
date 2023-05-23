@@ -12,3 +12,13 @@ test:
           tps: 20
       workload:
         module: benchmarks/workloads/callbacks.js
+    
+    - label: querying data
+      txNumber: 200
+      rateControl:
+        type: fixed-rate
+        opts: 
+          tps: 20
+      workload:
+        module: benchmarks/workloads/viewpatient.js
+        

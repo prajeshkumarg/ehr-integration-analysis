@@ -1,6 +1,6 @@
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-
+ 
 contract HealthCare {
     uint private lastPatientID = 0;
     uint private lastDoctorID = 0;

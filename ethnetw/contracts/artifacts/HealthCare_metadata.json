@@ -8,6 +8,29 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "patID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "docID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "diagnosis",
+						"type": "string"
+					}
+				],
+				"name": "addDiagnosis",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "string",
 						"name": "name",
 						"type": "string"
@@ -224,11 +247,11 @@
 	},
 	"sources": {
 		"ethnetw/contracts/HealthCare.sol": {
-			"keccak256": "0x1e5d2e658eb995b0ff62ed670677f288a317228c2391590382607be533cb730c",
+			"keccak256": "0x83aa117fcf767439580d676e63d46ded826ce086b50a47ecc82e5f40c775a621",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7c2b6f69a90ca265139576a61a09ad8307141224df8be2f4dcb2399bad84d41e",
-				"dweb:/ipfs/QmRxTHgu9TyGDc7Ji9E44U6W8XgLqboSCS2qvR4bYTzwHz"
+				"bzz-raw://df847d521d623901b10b2f3a1000375afad04f8a4803738ed998ddce9460dd08",
+				"dweb:/ipfs/QmNS5eC951GEvb2GjbSq7dJ9gVdPBywBzXDWvePMbencXu"
 			]
 		}
 	},

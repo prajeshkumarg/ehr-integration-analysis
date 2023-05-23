@@ -19,10 +19,12 @@ class AddPatientWorkload extends WorkloadModuleBase {
 
     
     async submitTransaction() {
+        const randomId = Math.floor(Math.random()*this.roundArguments.randomSeed);
         const myArgs = {
             contractId: 'HealthCare',
             contractFunction: 'addPatient',
-            contractArguments: ["PAT001","10","1234567890","India"],
+            //create random patient data using inbuilt random function
+            contractArguments: [randomId,"10","1234567890","India"],
             readOnly: false
             
         };
